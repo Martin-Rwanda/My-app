@@ -1,19 +1,41 @@
-# Ignore Python compiled files
-__pycache__/
+# Python bytecode files
 *.pyc
 *.pyo
+__pycache__
 
-# Ignore SQLite database
-db.sqlite3
+# Virtual environment directory
+venv/
+env/
+
+# Django migrations
+*/migrations/*
+*/__pycache__/
+
+# Database files
 *.sqlite3
+*.db
 
-# Ignore environment variables
+# .env file to keep sensitive info secure
 .env
 
-# Ignore Django migrations
-**/migrations/*.py
-!**/migrations/__init__.py
+# Logs and temporary files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.swp
 
-# Ignore media and static files (if necessary)
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+
+# media and static files
 media/
 staticfiles/
+
+# OS generated files (macOS, Windows)
+.DS_Store
+Thumbs.db
