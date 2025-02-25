@@ -20,6 +20,7 @@ from django.views.decorators.csrf import csrf_protect
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class RegisterView(APIView):
@@ -84,8 +85,10 @@ class RegisterPageView(TemplateView):
 class LoginPageView(TemplateView):
     template_name = 'login.html'
 
-class LandingPageView(TemplateView):
+class LandingPageView(LoginRequiredMixin, TemplateView):
     template_name = 'landing.html'
+    login_url = '/login/'  # Redirects to login page if user is not authenticated
+    redirect_field_name = 'next'  # Redirects back to the requested page after login
 
     def get(self, request, *args, **kwargs):
         # Check if user is authenticated (optional)
